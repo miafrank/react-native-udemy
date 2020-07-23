@@ -12,6 +12,7 @@ import {
 import Card from '../components/Card';
 import Colors from '../constants/colors';
 import Input from '../components/Input';
+import NumberContainer from '../components/NumberContainer';
 
 const StartGameScreen = (props) => {
   const [enteredValue, setEnteredValue] = useState('');
@@ -39,6 +40,7 @@ const StartGameScreen = (props) => {
     // Can still access entered value in snapshot
     setSelectedNumber(chosenNumber);
     setEnteredValue('');
+    Keyboard.dismiss();
   };
 
   let confirmedOutput;
@@ -47,9 +49,8 @@ const StartGameScreen = (props) => {
     confirmedOutput = (
       <Card style={styles.summaryContainer}>
         <Text>You selected</Text>
-        <View>
-          <Text>{selectedNumber}</Text>
-        </View>
+        <NumberContainer>{selectedNumber}</NumberContainer>
+        <Button title='Start Game' />
       </Card>
     );
   }
@@ -127,6 +128,7 @@ const styles = StyleSheet.create({
   },
   summaryContainer: {
     marginTop: 20,
+    alignItems: 'center',
   },
 });
 export default StartGameScreen;
